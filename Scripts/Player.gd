@@ -17,8 +17,8 @@ var audio_file
 var max_health = 200
 var max_health_limit = 200
 var current_health
-onready var healthbar = $HUD/MainHPBar
-onready var health_animation_node = $HUD/MainHPBar/Tween
+onready var healthbar = $GUI/HUD/HPBar
+onready var health_animation_node = $GUI/HUD/HPBar/Tween
 export(bool) var damage_received
 var is_dead = false
 
@@ -31,8 +31,8 @@ var damage_params = {
 	}
 
 #loot variables
-onready var souls_indicator = $HUD/Souls/SoulsIndicator
-onready var souls_animator = $HUD/Souls/SoulsIndicator/Tween
+onready var souls_indicator = $GUI/HUD/Souls/SoulsIndicator
+onready var souls_animator = $GUI/HUD/Souls/SoulsIndicator/Tween
 
 var souls_total = 30
 var prev_souls

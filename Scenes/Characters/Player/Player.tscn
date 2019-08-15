@@ -8,13 +8,14 @@
 [ext_resource path="res://Resources/audio/player_sounds/getting_hit.wav" type="AudioStream" id=6]
 [ext_resource path="res://Resources/audio/movement_sounds/player_footsteps_1.wav" type="AudioStream" id=7]
 [ext_resource path="res://Scenes/Characters/Misc/Camera.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Resources/Img/GUI/HUD_map.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Img/GUI/buttons_map.png" type="Texture" id=10]
-[ext_resource path="res://Resources/Img/GUI/btn_dir_jump.png" type="Texture" id=11]
-[ext_resource path="res://Scenes/Helpers/GUI_font.tres" type="DynamicFont" id=12]
-[ext_resource path="res://Resources/audio/gackground_sounds/night_sounds_calm.wav" type="AudioStream" id=13]
-[ext_resource path="res://Resources/audio/gackground_sounds/medieval_intro_music.wav" type="AudioStream" id=14]
-[ext_resource path="res://Scripts/Block.gd" type="Script" id=15]
+[ext_resource path="res://Resources/Img/GUI/buttons_map.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Img/GUI/btn_dir_jump.png" type="Texture" id=10]
+[ext_resource path="res://Scenes/Helpers/lvl_font.tres" type="DynamicFont" id=11]
+[ext_resource path="res://Resources/Img/GUI/HUD_map.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Helpers/GUI_font.tres" type="DynamicFont" id=13]
+[ext_resource path="res://Resources/audio/gackground_sounds/night_sounds_calm.wav" type="AudioStream" id=14]
+[ext_resource path="res://Resources/audio/gackground_sounds/medieval_intro_music.wav" type="AudioStream" id=15]
+[ext_resource path="res://Scripts/Block.gd" type="Script" id=16]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -299,7 +300,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HUD/MainHPBar:modulate")
+tracks/3/path = NodePath("GUI/HUD/HPBar:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -501,114 +502,110 @@ extents = Vector2( 6.81953, 10 )
 
 [sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 9 )
-region = Rect2( 67, 2, 227, 21 )
+region = Rect2( 0, 67, 66, 66 )
 
 [sub_resource type="AtlasTexture" id=40]
 atlas = ExtResource( 9 )
-region = Rect2( 67, 23, 225, 20 )
-
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 10 )
-region = Rect2( 0, 67, 66, 66 )
-
-[sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 10 )
 region = Rect2( 67, 67, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=43]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 9 )
 region = Rect2( 67, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 9 )
 region = Rect2( 0, 134, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 9 )
 region = Rect2( 67, 134, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 9 )
 region = Rect2( 134, 67, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=48]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 9 )
 region = Rect2( 201, 67, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=49]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 9 )
 region = Rect2( 134, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=50]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 9 )
 region = Rect2( 201, 0, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 9 )
 region = Rect2( 134, 201, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=52]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 9 )
 region = Rect2( 201, 201, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=77]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 9 )
 region = Rect2( 0, 201, 66, 66 )
 
-[sub_resource type="AtlasTexture" id=78]
-atlas = ExtResource( 10 )
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 9 )
 region = Rect2( 67, 201, 66, 66 )
 
 [sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 10 )
+atlas = ExtResource( 9 )
 region = Rect2( 143, 134, 54, 47 )
 
 [sub_resource type="AtlasTexture" id=54]
-atlas = ExtResource( 9 )
-region = Rect2( 56, 61, 235, 10 )
+atlas = ExtResource( 12 )
+region = Rect2( 2, 14, 244, 15 )
 
 [sub_resource type="AtlasTexture" id=55]
-atlas = ExtResource( 9 )
-region = Rect2( 56, 71, 233, 10 )
+atlas = ExtResource( 12 )
+region = Rect2( 2, 29, 244, 15 )
 
 [sub_resource type="AtlasTexture" id=56]
-atlas = ExtResource( 9 )
-region = Rect2( 49, 82, 232, 7 )
+atlas = ExtResource( 12 )
+region = Rect2( 2, 44, 171, 13 )
 
 [sub_resource type="AtlasTexture" id=57]
-atlas = ExtResource( 9 )
-region = Rect2( 49, 89, 230, 7 )
+atlas = ExtResource( 12 )
+region = Rect2( 2, 57, 171, 13 )
 
 [sub_resource type="AtlasTexture" id=58]
-atlas = ExtResource( 9 )
-region = Rect2( 38, 64, 9, 10 )
+atlas = ExtResource( 12 )
+region = Rect2( 2, 2, 8, 10 )
 
 [sub_resource type="AtlasTexture" id=59]
-atlas = ExtResource( 9 )
-region = Rect2( 3, 2, 61, 61 )
+atlas = ExtResource( 12 )
+region = Rect2( 2, 70, 276, 11 )
 
-[sub_resource type="CapsuleShape2D" id=60]
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 12 )
+region = Rect2( 2, 81, 276, 11 )
+
+[sub_resource type="CapsuleShape2D" id=61]
 radius = 5.41665
 height = 5.87008
 
-[sub_resource type="Gradient" id=61]
+[sub_resource type="Gradient" id=62]
 colors = PoolColorArray( 0.651367, 0.804695, 0.90625, 1, 0.664063, 0.976379, 1, 1 )
 
-[sub_resource type="GradientTexture" id=62]
-gradient = SubResource( 61 )
+[sub_resource type="GradientTexture" id=63]
+gradient = SubResource( 62 )
 
-[sub_resource type="Curve" id=63]
+[sub_resource type="Curve" id=64]
 _data = [ Vector2( 0, 0.6903 ), 0.0, 0.0, 0, 0, Vector2( 0.999469, 0.28 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=64]
+[sub_resource type="CurveTexture" id=65]
 width = 50
-curve = SubResource( 63 )
+curve = SubResource( 64 )
 
-[sub_resource type="ParticlesMaterial" id=65]
+[sub_resource type="ParticlesMaterial" id=66]
 emission_shape = 2
 emission_box_extents = Vector3( 4, 6, 1 )
 flag_disable_z = true
@@ -619,56 +616,58 @@ angular_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 damping = 65.0
-scale_curve = SubResource( 64 )
-color_ramp = SubResource( 62 )
+scale_curve = SubResource( 65 )
+color_ramp = SubResource( 63 )
 
-[sub_resource type="RectangleShape2D" id=66]
+[sub_resource type="RectangleShape2D" id=67]
 extents = Vector2( 8, 10 )
 
-[sub_resource type="Gradient" id=67]
+[sub_resource type="Gradient" id=68]
 colors = PoolColorArray( 0.137255, 0.180392, 0.466667, 0.588235, 0.533333, 0.866667, 0.956863, 0.588235 )
 
-[sub_resource type="GradientTexture" id=68]
-gradient = SubResource( 67 )
+[sub_resource type="GradientTexture" id=69]
+gradient = SubResource( 68 )
 
-[sub_resource type="Curve" id=69]
+[sub_resource type="Curve" id=70]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.3647 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=70]
-curve = SubResource( 69 )
+[sub_resource type="CurveTexture" id=71]
+curve = SubResource( 70 )
 
-[sub_resource type="ParticlesMaterial" id=71]
+[sub_resource type="ParticlesMaterial" id=72]
 emission_shape = 1
 emission_sphere_radius = 10.0
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
+angular_velocity = 1.04883e-008
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 70 )
-color_ramp = SubResource( 68 )
+scale_curve = SubResource( 71 )
+color_ramp = SubResource( 69 )
 
-[sub_resource type="Gradient" id=72]
+[sub_resource type="Gradient" id=73]
 offsets = PoolRealArray( 0, 0.248908, 1 )
 colors = PoolColorArray( 0.476563, 0, 0, 1, 0.945098, 0.458824, 0.0313726, 0.839216, 0.997772, 1, 0.714844, 1 )
 
-[sub_resource type="GradientTexture" id=73]
-gradient = SubResource( 72 )
+[sub_resource type="GradientTexture" id=74]
+gradient = SubResource( 73 )
 
-[sub_resource type="Curve" id=74]
+[sub_resource type="Curve" id=75]
 _data = [ Vector2( 0, 0.7464 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.2096 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=75]
-curve = SubResource( 74 )
+[sub_resource type="CurveTexture" id=76]
+curve = SubResource( 75 )
 
-[sub_resource type="ParticlesMaterial" id=76]
+[sub_resource type="ParticlesMaterial" id=77]
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 35.0
 initial_velocity_random = 0.64
+angular_velocity = 6.18238e-033
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 75 )
-color_ramp = SubResource( 73 )
+scale_curve = SubResource( 76 )
+color_ramp = SubResource( 74 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 12
@@ -722,21 +721,9 @@ position = Vector2( 15.6604, -0.346598 )
 shape = SubResource( 38 )
 disabled = true
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="MainHPBar" type="TextureProgress" parent="HUD"]
-editor/display_folded = true
-margin_left = 71.0
-margin_top = 30.6534
-margin_right = 298.0
-margin_bottom = 51.6534
-value = 100.0
-texture_under = SubResource( 39 )
-texture_progress = SubResource( 40 )
-
-[node name="Tween" type="Tween" parent="HUD/MainHPBar"]
-
-[node name="ActionBtns" type="Control" parent="HUD"]
+[node name="ActionBtns" type="Control" parent="GUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -0.346598
@@ -745,146 +732,160 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="TouchLeft" type="TouchScreenButton" parent="HUD/ActionBtns"]
+[node name="TouchLeft" type="TouchScreenButton" parent="GUI/ActionBtns"]
 position = Vector2( 51.7209, 490 )
-normal = SubResource( 41 )
-pressed = SubResource( 42 )
+normal = SubResource( 39 )
+pressed = SubResource( 40 )
 passby_press = true
 action = "ui_left"
 visibility_mode = 1
 
-[node name="TouchRight" type="TouchScreenButton" parent="HUD/ActionBtns"]
+[node name="TouchRight" type="TouchScreenButton" parent="GUI/ActionBtns"]
 position = Vector2( 181.721, 490 )
-normal = SubResource( 43 )
-pressed = SubResource( 44 )
+normal = SubResource( 41 )
+pressed = SubResource( 42 )
 passby_press = true
 action = "ui_right"
 visibility_mode = 1
 
-[node name="TouchUp" type="TouchScreenButton" parent="HUD/ActionBtns"]
+[node name="TouchUp" type="TouchScreenButton" parent="GUI/ActionBtns"]
 position = Vector2( 122, 420 )
-normal = SubResource( 45 )
-pressed = SubResource( 46 )
+normal = SubResource( 43 )
+pressed = SubResource( 44 )
 passby_press = true
 action = "ui_up"
 visibility_mode = 1
 
-[node name="TouchUpLeft" type="TouchScreenButton" parent="HUD/ActionBtns"]
+[node name="TouchUpLeft" type="TouchScreenButton" parent="GUI/ActionBtns"]
 position = Vector2( 30, 400 )
-normal = ExtResource( 11 )
+normal = ExtResource( 10 )
 passby_press = true
 action = "ui_left_up"
 visibility_mode = 1
 
-[node name="TouchUpRight" type="TouchScreenButton" parent="HUD/ActionBtns"]
+[node name="TouchUpRight" type="TouchScreenButton" parent="GUI/ActionBtns"]
 position = Vector2( 190.721, 400 )
-normal = ExtResource( 11 )
+normal = ExtResource( 10 )
 passby_press = true
 action = "ui_right_up"
 visibility_mode = 1
 
-[node name="TouchPick" type="TouchScreenButton" parent="HUD/ActionBtns"]
+[node name="TouchPick" type="TouchScreenButton" parent="GUI/ActionBtns"]
 position = Vector2( 763.721, 448 )
-normal = SubResource( 47 )
-pressed = SubResource( 48 )
+normal = SubResource( 45 )
+pressed = SubResource( 46 )
 passby_press = true
 action = "ui_accept"
 visibility_mode = 1
 
-[node name="TouchAttack" type="TouchScreenButton" parent="HUD/ActionBtns"]
+[node name="TouchAttack" type="TouchScreenButton" parent="GUI/ActionBtns"]
 position = Vector2( 878.721, 415 )
 scale = Vector2( 1.5, 1.5 )
-normal = SubResource( 49 )
-pressed = SubResource( 50 )
+normal = SubResource( 47 )
+pressed = SubResource( 48 )
 passby_press = true
 action = "ui_attack"
 visibility_mode = 1
 
-[node name="TouchHeal" type="TouchScreenButton" parent="HUD/ActionBtns"]
+[node name="TouchHeal" type="TouchScreenButton" parent="GUI/ActionBtns"]
 position = Vector2( 800, 330.347 )
-normal = SubResource( 51 )
-pressed = SubResource( 52 )
+normal = SubResource( 49 )
+pressed = SubResource( 50 )
 action = "ui_action_1"
 visibility_mode = 1
 
-[node name="TouchBlock" type="TouchScreenButton" parent="HUD/ActionBtns"]
+[node name="TouchBlock" type="TouchScreenButton" parent="GUI/ActionBtns"]
 position = Vector2( 920, 300.347 )
-normal = SubResource( 77 )
-pressed = SubResource( 78 )
+normal = SubResource( 51 )
+pressed = SubResource( 52 )
 action = "ui_block"
 visibility_mode = 1
 
-[node name="TouchOptions" type="TouchScreenButton" parent="HUD/ActionBtns"]
+[node name="TouchOptions" type="TouchScreenButton" parent="GUI/ActionBtns"]
 position = Vector2( 940, 30 )
 normal = SubResource( 53 )
 passby_press = true
 action = "ui_cancel"
 visibility_mode = 1
 
-[node name="StamBar" type="TextureProgress" parent="HUD"]
-margin_left = 81.0
-margin_top = 50.0
-margin_right = 316.0
-margin_bottom = 60.0
-value = 100.0
-texture_under = SubResource( 54 )
-texture_progress = SubResource( 55 )
+[node name="HUD" type="Control" parent="GUI"]
+margin_right = 40.0
+margin_bottom = 40.0
 
-[node name="EXPBar" type="TextureProgress" parent="HUD"]
-margin_left = 74.0
-margin_top = 60.0
-margin_right = 306.0
-margin_bottom = 67.0
-value = 80.0
-texture_under = SubResource( 56 )
-texture_progress = SubResource( 57 )
-
-[node name="Souls" type="Control" parent="HUD"]
-editor/display_folded = true
-margin_left = 80.0
-margin_top = 74.0
-margin_right = 120.0
-margin_bottom = 114.0
-
-[node name="SoulsIndicator" type="Label" parent="HUD/Souls"]
-margin_left = 22.0
-margin_top = 1.0
-margin_right = 62.0
-margin_bottom = 29.0
-custom_fonts/font = ExtResource( 12 )
-text = "30"
-
-[node name="Tween" type="Tween" parent="HUD/Souls/SoulsIndicator"]
-
-[node name="TextureRect" type="TextureRect" parent="HUD/Souls"]
-margin_top = 1.0
-margin_right = 16.0
-margin_bottom = 19.0
-texture = SubResource( 58 )
-expand = true
-
-[node name="Lvl" type="Control" parent="HUD"]
+[node name="Lvl" type="Control" parent="GUI/HUD"]
 margin_left = 30.0
 margin_top = 20.0
 margin_right = 90.0
 margin_bottom = 80.0
 
-[node name="Lvl_bg" type="TextureRect" parent="HUD/Lvl"]
-margin_left = -1.0
-margin_right = 60.0
-margin_bottom = 61.0
-texture = SubResource( 59 )
-
-[node name="lvl_count" type="Label" parent="HUD/Lvl"]
-modulate = Color( 0.25098, 0.243137, 0.243137, 1 )
-margin_left = -1.0
-margin_top = 5.0
-margin_right = 60.0
-margin_bottom = 63.0
-custom_fonts/font = ExtResource( 12 )
-text = "1"
+[node name="lvl_count" type="Label" parent="GUI/HUD/Lvl"]
+margin_left = -3.72092
+margin_top = 4.0
+margin_right = 30.2791
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 11 )
+text = "lvl. 1"
 align = 1
 valign = 1
+
+[node name="HPBar" type="TextureProgress" parent="GUI/HUD"]
+margin_left = 31.0
+margin_top = 46.0
+margin_right = 275.0
+margin_bottom = 61.0
+value = 100.0
+texture_under = SubResource( 54 )
+texture_progress = SubResource( 55 )
+
+[node name="Tween" type="Tween" parent="GUI/HUD/HPBar"]
+
+[node name="StamBar" type="TextureProgress" parent="GUI/HUD"]
+visible = false
+margin_left = 31.0
+margin_top = 71.0
+margin_right = 202.0
+margin_bottom = 84.0
+value = 100.0
+texture_under = SubResource( 56 )
+texture_progress = SubResource( 57 )
+
+[node name="Tween" type="Tween" parent="GUI/HUD/StamBar"]
+
+[node name="Souls" type="Control" parent="GUI/HUD"]
+margin_left = 80.0
+margin_top = 74.0
+margin_right = 120.0
+margin_bottom = 114.0
+
+[node name="TextureRect" type="TextureRect" parent="GUI/HUD/Souls"]
+margin_left = 211.0
+margin_top = -28.0
+margin_right = 227.0
+margin_bottom = -10.0
+texture = SubResource( 58 )
+expand = true
+
+[node name="SoulsIndicator" type="Label" parent="GUI/HUD/Souls"]
+margin_left = 231.0
+margin_top = -29.0
+margin_right = 271.0
+margin_bottom = -1.0
+custom_fonts/font = ExtResource( 13 )
+text = "30"
+
+[node name="Tween" type="Tween" parent="GUI/HUD/Souls/SoulsIndicator"]
+
+[node name="EXPBar" type="TextureProgress" parent="GUI/HUD"]
+visible = false
+margin_left = 31.0
+margin_top = 108.0
+margin_right = 307.0
+margin_bottom = 119.0
+value = 80.0
+texture_under = SubResource( 59 )
+texture_progress = SubResource( 60 )
+
+[node name="Tween" type="Tween" parent="GUI/HUD/EXPBar"]
 
 [node name="HitBox" type="Area2D" parent="."]
 editor/display_folded = true
@@ -896,7 +897,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( -0.72092, -0.346598 )
-shape = SubResource( 60 )
+shape = SubResource( 61 )
 
 [node name="Audio" type="Node2D" parent="."]
 editor/display_folded = true
@@ -906,7 +907,7 @@ __meta__ = {
 
 [node name="BackgroundSoundPlayer" type="AudioStreamPlayer" parent="Audio"]
 pause_mode = 2
-stream = ExtResource( 13 )
+stream = ExtResource( 14 )
 autoplay = true
 bus = "NatureBG"
 
@@ -922,7 +923,7 @@ bus = "SFX"
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="Audio"]
 pause_mode = 2
-stream = ExtResource( 14 )
+stream = ExtResource( 15 )
 autoplay = true
 bus = "Music"
 
@@ -935,7 +936,7 @@ position = Vector2( 0.279079, 3 )
 amount = 50
 preprocess = 2.0
 speed_scale = 2.0
-process_material = SubResource( 65 )
+process_material = SubResource( 66 )
 
 [node name="Timer" type="Timer" parent="ParticlesAnimation"]
 wait_time = 0.4
@@ -944,11 +945,11 @@ one_shot = true
 [node name="Block" type="Area2D" parent="."]
 visible = false
 collision_mask = 30
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
 position = Vector2( 8, -2 )
-shape = SubResource( 66 )
+shape = SubResource( 67 )
 disabled = true
 
 [node name="BlockEffect" type="Particles2D" parent="Block"]
@@ -956,7 +957,7 @@ position = Vector2( 0, -2 )
 amount = 50
 lifetime = 0.8
 speed_scale = 2.0
-process_material = SubResource( 71 )
+process_material = SubResource( 72 )
 
 [node name="BlockedStrike" type="Particles2D" parent="Block"]
 visible = false
@@ -966,7 +967,7 @@ lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
 randomness = 1.0
-process_material = SubResource( 76 )
+process_material = SubResource( 77 )
 
 [connection signal="body_entered" from="PlayerWeaponHitRange" to="." method="_on_damage_dealt"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit"]
