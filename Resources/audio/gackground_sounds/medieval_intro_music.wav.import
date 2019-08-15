@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/medieval_intro_music.wav-0b6549f72cda5d2dfdda634dcd4a418b.sample"
+
+[deps]
+
+source_file="res://Resources/audio/gackground_sounds/medieval_intro_music.wav"
+dest_files=[ "res://.import/medieval_intro_music.wav-0b6549f72cda5d2dfdda634dcd4a418b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

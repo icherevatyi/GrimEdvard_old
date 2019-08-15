@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/absorb_souls-old2.wav-4a0e983547dff46b8601e174a5f80dd1.sample"
+
+[deps]
+
+source_file="res://Resources/audio/player_sounds/absorb_souls-old2.wav"
+dest_files=[ "res://.import/absorb_souls-old2.wav-4a0e983547dff46b8601e174a5f80dd1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

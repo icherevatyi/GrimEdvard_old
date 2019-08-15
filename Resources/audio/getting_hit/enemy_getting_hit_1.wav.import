@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enemy_getting_hit_1.wav-2b9c3982a5fe770a87c8b0bbf8d5e711.sample"
+
+[deps]
+
+source_file="res://Resources/audio/getting_hit/enemy_getting_hit_1.wav"
+dest_files=[ "res://.import/enemy_getting_hit_1.wav-2b9c3982a5fe770a87c8b0bbf8d5e711.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Soul.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Img/Items/soul.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2.5, 2.5 )
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.208633, 1 )
+colors = PoolColorArray( 0.839844, 0.902405, 1, 1, 0.708493, 0.929085, 0.958953, 1, 0.359375, 1, 0.849854, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.885 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.15401, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+width = 512
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+flag_disable_z = true
+spread = 15.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 55.0
+angular_velocity = 350.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 5.0
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 6 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 390, 130 )
+
+[node name="Soul" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+show_behind_parent = true
+amount = 30
+speed_scale = 1.5
+process_material = SubResource( 2 )
+
+[node name="ChasingArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChasingArea"]
+visible = false
+shape = SubResource( 7 )
+
+[connection signal="body_entered" from="." to="." method="_on_Soul_body_entered"]

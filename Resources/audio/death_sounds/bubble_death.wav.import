@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bubble_death.wav-864a27579f63816bbd062d981c6e58fd.sample"
+
+[deps]
+
+source_file="res://Resources/audio/death_sounds/bubble_death.wav"
+dest_files=[ "res://.import/bubble_death.wav-864a27579f63816bbd062d981c6e58fd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bottle_spawn.wav-d16cad120a8e8d70d8f501d641ddf9be.sample"
+
+[deps]
+
+source_file="res://Resources/audio/item_sounds/bottle_spawn.wav"
+dest_files=[ "res://.import/bottle_spawn.wav-d16cad120a8e8d70d8f501d641ddf9be.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

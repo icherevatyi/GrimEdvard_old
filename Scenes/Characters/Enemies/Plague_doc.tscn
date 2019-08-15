@@ -1,0 +1,228 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/Characters/Enemies/Enemy_parent.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Plague_doc.gd" type="Script" id=2]
+[ext_resource path="res://Resources/Img/Enemies/plague_doctor_map.png" type="Texture" id=3]
+[ext_resource path="res://Resources/audio/death_sounds/smoke_death.wav" type="AudioStream" id=4]
+[ext_resource path="res://Resources/audio/death_sounds/falling_stonetomb.wav" type="AudioStream" id=5]
+[ext_resource path="res://Resources/audio/weapon_attack/gunshot_1.wav" type="AudioStream" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 192, 224 )
+
+[sub_resource type="Animation" id=3]
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 12, 13, 14, 15 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 100, 100, 100, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_ouch"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.7
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:is_dead")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Enemy_HP_Under:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Enemy_HP_Upper:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("Audio/Death")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0.3, 0.55 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_generate_loot"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 42, 8.22521 )
+
+[node name="Doc" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="BulletContianer" type="Node2D" parent="." index="0"]
+editor/display_folded = true
+
+[node name="BulletSpawn" type="Position2D" parent="BulletContianer" index="0"]
+position = Vector2( 13.875, -2.815 )
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2( 0, -5 )
+texture = SubResource( 1 )
+vframes = 7
+hframes = 4
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2( 0.033545, -7.33305 )
+polygon = PoolVector2Array( -10.0335, 17.333, 9.96646, 17.333, 19.9665, 7.33305, 19.9665, -2.66695, 0.0065284, -8.38957, -10.1321, -3.52859 )
+
+[node name="AnimationPlayer" parent="." index="3"]
+anims/damaged = SubResource( 3 )
+anims/death = SubResource( 4 )
+anims/idle = SubResource( 5 )
+
+[node name="AnimationTree" parent="." index="4"]
+parameters/playback = SubResource( 6 )
+
+[node name="Enemy_HP_Under" parent="." index="6"]
+position = Vector2( -16, -21 )
+
+[node name="Enemy_HP_Upper" parent="." index="7"]
+position = Vector2( -16, -21 )
+
+[node name="SFX" parent="Audio" index="0"]
+stream = ExtResource( 6 )
+
+[node name="Alert" parent="." index="9"]
+editor/display_folded = true
+position = Vector2( 0, -48 )
+
+[node name="DetectionRange" parent="." index="10"]
+visible = false
+
+[node name="CollisionShape2D" parent="DetectionRange" index="0"]
+position = Vector2( 40, -5 )
+shape = SubResource( 7 )
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="DetectionRange" index="1"]
+position = Vector2( 0.12851, 0 )
+polygon = PoolVector2Array( -0.12851, -10, -0.12851, -30, 29.8715, -30, 59.8715, -20, 81.8185, -13.4369, 81.8185, 3.00508, -0.160485, 2.91976 )
+
+[node name="Timers" parent="." index="11"]
+position = Vector2( -0.0922585, 0 )
+
+[node name="ChasingRange" parent="." index="12"]
+visible = false
+
