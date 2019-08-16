@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Img/Player/reaper_map.png" type="Texture" id=2]
@@ -13,9 +13,10 @@
 [ext_resource path="res://Scenes/Helpers/lvl_font.tres" type="DynamicFont" id=11]
 [ext_resource path="res://Resources/Img/GUI/HUD_map.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Helpers/GUI_font.tres" type="DynamicFont" id=13]
-[ext_resource path="res://Resources/audio/gackground_sounds/night_sounds_calm.wav" type="AudioStream" id=14]
-[ext_resource path="res://Resources/audio/gackground_sounds/medieval_intro_music.wav" type="AudioStream" id=15]
-[ext_resource path="res://Scripts/Block.gd" type="Script" id=16]
+[ext_resource path="res://Scenes/Helpers/screen_text.tres" type="DynamicFont" id=14]
+[ext_resource path="res://Resources/audio/gackground_sounds/night_sounds_calm.wav" type="AudioStream" id=15]
+[ext_resource path="res://Resources/audio/gackground_sounds/medieval_intro_music.wav" type="AudioStream" id=16]
+[ext_resource path="res://Scripts/Block.gd" type="Script" id=17]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -558,7 +559,7 @@ region = Rect2( 67, 201, 66, 66 )
 
 [sub_resource type="AtlasTexture" id=53]
 atlas = ExtResource( 9 )
-region = Rect2( 143, 134, 54, 47 )
+region = Rect2( 158, 135, 23, 45 )
 
 [sub_resource type="AtlasTexture" id=54]
 atlas = ExtResource( 12 )
@@ -588,24 +589,52 @@ region = Rect2( 2, 70, 276, 11 )
 atlas = ExtResource( 12 )
 region = Rect2( 2, 81, 276, 11 )
 
-[sub_resource type="CapsuleShape2D" id=61]
+[sub_resource type="Animation" id=61]
+resource_name = "msg_show"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=62]
 radius = 5.41665
 height = 5.87008
 
-[sub_resource type="Gradient" id=62]
+[sub_resource type="Gradient" id=63]
 colors = PoolColorArray( 0.651367, 0.804695, 0.90625, 1, 0.664063, 0.976379, 1, 1 )
 
-[sub_resource type="GradientTexture" id=63]
-gradient = SubResource( 62 )
+[sub_resource type="GradientTexture" id=64]
+gradient = SubResource( 63 )
 
-[sub_resource type="Curve" id=64]
+[sub_resource type="Curve" id=65]
 _data = [ Vector2( 0, 0.6903 ), 0.0, 0.0, 0, 0, Vector2( 0.999469, 0.28 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=65]
+[sub_resource type="CurveTexture" id=66]
 width = 50
-curve = SubResource( 64 )
+curve = SubResource( 65 )
 
-[sub_resource type="ParticlesMaterial" id=66]
+[sub_resource type="ParticlesMaterial" id=67]
 emission_shape = 2
 emission_box_extents = Vector3( 4, 6, 1 )
 flag_disable_z = true
@@ -616,25 +645,25 @@ angular_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 damping = 65.0
-scale_curve = SubResource( 65 )
-color_ramp = SubResource( 63 )
+scale_curve = SubResource( 66 )
+color_ramp = SubResource( 64 )
 
-[sub_resource type="RectangleShape2D" id=67]
+[sub_resource type="RectangleShape2D" id=68]
 extents = Vector2( 8, 10 )
 
-[sub_resource type="Gradient" id=68]
+[sub_resource type="Gradient" id=69]
 colors = PoolColorArray( 0.137255, 0.180392, 0.466667, 0.588235, 0.533333, 0.866667, 0.956863, 0.588235 )
 
-[sub_resource type="GradientTexture" id=69]
-gradient = SubResource( 68 )
+[sub_resource type="GradientTexture" id=70]
+gradient = SubResource( 69 )
 
-[sub_resource type="Curve" id=70]
+[sub_resource type="Curve" id=71]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.3647 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=71]
-curve = SubResource( 70 )
+[sub_resource type="CurveTexture" id=72]
+curve = SubResource( 71 )
 
-[sub_resource type="ParticlesMaterial" id=72]
+[sub_resource type="ParticlesMaterial" id=73]
 emission_shape = 1
 emission_sphere_radius = 10.0
 flag_disable_z = true
@@ -642,23 +671,23 @@ gravity = Vector3( 0, 0, 0 )
 angular_velocity = 1.04883e-008
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 71 )
-color_ramp = SubResource( 69 )
+scale_curve = SubResource( 72 )
+color_ramp = SubResource( 70 )
 
-[sub_resource type="Gradient" id=73]
+[sub_resource type="Gradient" id=74]
 offsets = PoolRealArray( 0, 0.248908, 1 )
 colors = PoolColorArray( 0.476563, 0, 0, 1, 0.945098, 0.458824, 0.0313726, 0.839216, 0.997772, 1, 0.714844, 1 )
 
-[sub_resource type="GradientTexture" id=74]
-gradient = SubResource( 73 )
+[sub_resource type="GradientTexture" id=75]
+gradient = SubResource( 74 )
 
-[sub_resource type="Curve" id=75]
+[sub_resource type="Curve" id=76]
 _data = [ Vector2( 0, 0.7464 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.2096 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=76]
-curve = SubResource( 75 )
+[sub_resource type="CurveTexture" id=77]
+curve = SubResource( 76 )
 
-[sub_resource type="ParticlesMaterial" id=77]
+[sub_resource type="ParticlesMaterial" id=78]
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 35.0
@@ -666,8 +695,8 @@ initial_velocity_random = 0.64
 angular_velocity = 6.18238e-033
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 76 )
-color_ramp = SubResource( 74 )
+scale_curve = SubResource( 77 )
+color_ramp = SubResource( 75 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 12
@@ -710,6 +739,7 @@ active = true
 parameters/playback = SubResource( 37 )
 
 [node name="Camera" parent="." instance=ExtResource( 8 )]
+drag_margin_top = 0.5
 
 [node name="PlayerWeaponHitRange" type="Area2D" parent="."]
 editor/display_folded = true
@@ -724,6 +754,7 @@ disabled = true
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="ActionBtns" type="Control" parent="GUI"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -0.346598
@@ -733,7 +764,7 @@ __meta__ = {
 }
 
 [node name="TouchLeft" type="TouchScreenButton" parent="GUI/ActionBtns"]
-position = Vector2( 51.7209, 490 )
+position = Vector2( 31.7209, 490 )
 normal = SubResource( 39 )
 pressed = SubResource( 40 )
 passby_press = true
@@ -741,7 +772,7 @@ action = "ui_left"
 visibility_mode = 1
 
 [node name="TouchRight" type="TouchScreenButton" parent="GUI/ActionBtns"]
-position = Vector2( 181.721, 490 )
+position = Vector2( 161.721, 490 )
 normal = SubResource( 41 )
 pressed = SubResource( 42 )
 passby_press = true
@@ -749,7 +780,7 @@ action = "ui_right"
 visibility_mode = 1
 
 [node name="TouchUp" type="TouchScreenButton" parent="GUI/ActionBtns"]
-position = Vector2( 122, 420 )
+position = Vector2( 98, 420 )
 normal = SubResource( 43 )
 pressed = SubResource( 44 )
 passby_press = true
@@ -757,21 +788,21 @@ action = "ui_up"
 visibility_mode = 1
 
 [node name="TouchUpLeft" type="TouchScreenButton" parent="GUI/ActionBtns"]
-position = Vector2( 30, 400 )
+position = Vector2( 8, 400 )
 normal = ExtResource( 10 )
 passby_press = true
 action = "ui_left_up"
 visibility_mode = 1
 
 [node name="TouchUpRight" type="TouchScreenButton" parent="GUI/ActionBtns"]
-position = Vector2( 190.721, 400 )
+position = Vector2( 165.721, 401 )
 normal = ExtResource( 10 )
 passby_press = true
 action = "ui_right_up"
 visibility_mode = 1
 
 [node name="TouchPick" type="TouchScreenButton" parent="GUI/ActionBtns"]
-position = Vector2( 763.721, 448 )
+position = Vector2( 798.721, 480 )
 normal = SubResource( 45 )
 pressed = SubResource( 46 )
 passby_press = true
@@ -779,7 +810,7 @@ action = "ui_accept"
 visibility_mode = 1
 
 [node name="TouchAttack" type="TouchScreenButton" parent="GUI/ActionBtns"]
-position = Vector2( 878.721, 415 )
+position = Vector2( 896, 447 )
 scale = Vector2( 1.5, 1.5 )
 normal = SubResource( 47 )
 pressed = SubResource( 48 )
@@ -788,21 +819,21 @@ action = "ui_attack"
 visibility_mode = 1
 
 [node name="TouchHeal" type="TouchScreenButton" parent="GUI/ActionBtns"]
-position = Vector2( 800, 330.347 )
+position = Vector2( 830, 372.347 )
 normal = SubResource( 49 )
 pressed = SubResource( 50 )
 action = "ui_action_1"
 visibility_mode = 1
 
 [node name="TouchBlock" type="TouchScreenButton" parent="GUI/ActionBtns"]
-position = Vector2( 920, 300.347 )
+position = Vector2( 927, 352.347 )
 normal = SubResource( 51 )
 pressed = SubResource( 52 )
 action = "ui_block"
 visibility_mode = 1
 
 [node name="TouchOptions" type="TouchScreenButton" parent="GUI/ActionBtns"]
-position = Vector2( 940, 30 )
+position = Vector2( 970, 30 )
 normal = SubResource( 53 )
 passby_press = true
 action = "ui_cancel"
@@ -816,7 +847,7 @@ margin_bottom = 40.0
 margin_left = 30.0
 margin_top = 20.0
 margin_right = 90.0
-margin_bottom = 80.0
+margin_bottom = 44.0
 
 [node name="lvl_count" type="Label" parent="GUI/HUD/Lvl"]
 margin_left = -3.72092
@@ -829,6 +860,7 @@ align = 1
 valign = 1
 
 [node name="HPBar" type="TextureProgress" parent="GUI/HUD"]
+editor/display_folded = true
 margin_left = 31.0
 margin_top = 46.0
 margin_right = 275.0
@@ -840,42 +872,48 @@ texture_progress = SubResource( 55 )
 [node name="Tween" type="Tween" parent="GUI/HUD/HPBar"]
 
 [node name="StamBar" type="TextureProgress" parent="GUI/HUD"]
-visible = false
 margin_left = 31.0
 margin_top = 71.0
 margin_right = 202.0
 margin_bottom = 84.0
-value = 100.0
+max_value = 60.0
+value = 60.0
 texture_under = SubResource( 56 )
 texture_progress = SubResource( 57 )
 
 [node name="Tween" type="Tween" parent="GUI/HUD/StamBar"]
 
+[node name="RegenerationDelay" type="Timer" parent="GUI/HUD/StamBar"]
+wait_time = 0.3
+
 [node name="Souls" type="Control" parent="GUI/HUD"]
-margin_left = 80.0
-margin_top = 74.0
-margin_right = 120.0
-margin_bottom = 114.0
+editor/display_folded = true
+margin_left = 291.0
+margin_top = 46.0
+margin_right = 340.0
+margin_bottom = 70.0
 
 [node name="TextureRect" type="TextureRect" parent="GUI/HUD/Souls"]
-margin_left = 211.0
-margin_top = -28.0
-margin_right = 227.0
-margin_bottom = -10.0
+margin_left = -70.0
+margin_top = 25.0
+margin_right = -54.0
+margin_bottom = 43.0
 texture = SubResource( 58 )
 expand = true
 
 [node name="SoulsIndicator" type="Label" parent="GUI/HUD/Souls"]
-margin_left = 231.0
-margin_top = -29.0
-margin_right = 271.0
-margin_bottom = -1.0
+editor/display_folded = true
+margin_left = -50.279
+margin_top = 24.0
+margin_right = -10.279
+margin_bottom = 52.0
 custom_fonts/font = ExtResource( 13 )
 text = "30"
 
 [node name="Tween" type="Tween" parent="GUI/HUD/Souls/SoulsIndicator"]
 
 [node name="EXPBar" type="TextureProgress" parent="GUI/HUD"]
+editor/display_folded = true
 visible = false
 margin_left = 31.0
 margin_top = 108.0
@@ -887,6 +925,27 @@ texture_progress = SubResource( 60 )
 
 [node name="Tween" type="Tween" parent="GUI/HUD/EXPBar"]
 
+[node name="DisplayTextMsg" type="Control" parent="GUI"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -78.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="GUI/DisplayTextMsg"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 14 )
+custom_colors/font_color = Color( 0.733333, 0.733333, 0.733333, 1 )
+text = "Your Concentration is too low"
+align = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/DisplayTextMsg"]
+anims/msg_show = SubResource( 61 )
+
 [node name="HitBox" type="Area2D" parent="."]
 editor/display_folded = true
 visible = false
@@ -897,7 +956,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( -0.72092, -0.346598 )
-shape = SubResource( 61 )
+shape = SubResource( 62 )
 
 [node name="Audio" type="Node2D" parent="."]
 editor/display_folded = true
@@ -907,7 +966,7 @@ __meta__ = {
 
 [node name="BackgroundSoundPlayer" type="AudioStreamPlayer" parent="Audio"]
 pause_mode = 2
-stream = ExtResource( 14 )
+stream = ExtResource( 15 )
 autoplay = true
 bus = "NatureBG"
 
@@ -923,7 +982,7 @@ bus = "SFX"
 
 [node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="Audio"]
 pause_mode = 2
-stream = ExtResource( 15 )
+stream = ExtResource( 16 )
 autoplay = true
 bus = "Music"
 
@@ -931,25 +990,27 @@ bus = "Music"
 visible = false
 
 [node name="ParticlesAnimation" type="Particles2D" parent="."]
+editor/display_folded = true
 visible = false
 position = Vector2( 0.279079, 3 )
 amount = 50
 preprocess = 2.0
 speed_scale = 2.0
-process_material = SubResource( 66 )
+process_material = SubResource( 67 )
 
 [node name="Timer" type="Timer" parent="ParticlesAnimation"]
 wait_time = 0.4
 one_shot = true
 
 [node name="Block" type="Area2D" parent="."]
+editor/display_folded = true
 visible = false
 collision_mask = 30
-script = ExtResource( 16 )
+script = ExtResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
 position = Vector2( 8, -2 )
-shape = SubResource( 67 )
+shape = SubResource( 68 )
 disabled = true
 
 [node name="BlockEffect" type="Particles2D" parent="Block"]
@@ -957,7 +1018,7 @@ position = Vector2( 0, -2 )
 amount = 50
 lifetime = 0.8
 speed_scale = 2.0
-process_material = SubResource( 72 )
+process_material = SubResource( 73 )
 
 [node name="BlockedStrike" type="Particles2D" parent="Block"]
 visible = false
@@ -967,10 +1028,11 @@ lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
 randomness = 1.0
-process_material = SubResource( 77 )
+process_material = SubResource( 78 )
 
 [connection signal="body_entered" from="PlayerWeaponHitRange" to="." method="_on_damage_dealt"]
+[connection signal="timeout" from="GUI/HUD/StamBar/RegenerationDelay" to="." method="_on_RegenerationDelay_timeout"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_player_screen_exited"]
 [connection signal="timeout" from="ParticlesAnimation/Timer" to="." method="_on_SoulReceive_timeout"]
-[connection signal="area_entered" from="Block" to="Block" method="_on_Block_area_entered"]
+[connection signal="area_entered" from="Block" to="." method="_on_Block_area_entered"]

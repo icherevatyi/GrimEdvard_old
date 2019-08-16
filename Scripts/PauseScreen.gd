@@ -12,7 +12,7 @@ func _on_Resume():
 
 
 func _on_Restart():
-	get_tree().change_scene("res://Scenes/Levels/Level_1.tscn")
+	get_tree().change_scene("res://Scenes/Levels/Test_lvl.tscn")
 	_pause_action()
 
 

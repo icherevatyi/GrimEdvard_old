@@ -21,10 +21,12 @@ func _on_Bullet_timeout():
 
 func _on_Bullet_body_entered(body):
 	if body.name == "Player":
+		set_process(false)
 		$Sprite.visible = false
 		queue_free()
 
 func _on_Bullet_area_entered(area):
 	if area.name == "Block":
+		set_process(false)
 		$Sprite.visible = false
 		queue_free()
