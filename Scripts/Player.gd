@@ -9,27 +9,26 @@ export(int) var acceleration = 50
 export(int) var jump_height = -300
 export(bool) var punch = false
 
+
+onready var GUI = $GUI
+onready var healing_animation = $Spells/Heal
+onready var healing_animation_timer = $Spells/Heal/Heal_animation_timer
+
 # animation variables
 var state_machine
 var audio_file
 
 # health management variables
-var max_health = 200
-var max_health_limit = 200
-var current_health
-onready var healthbar = $GUI/HUD/HPBar
-onready var health_animation_node = $GUI/HUD/HPBar/Tween
+var health_max = 200
+var health_current = health_max
+
 export(bool) var damage_received
 var is_dead = false
 
 # stamina management variables
-var max_stam = 60
-var current_stam
-var updated_stam
+var stamina_max = 60
+var stamina_current = stamina_max
 var stamprice = 20
-onready var stambar = $GUI/HUD/StamBar
-onready var stambar_animation_node = $GUI/HUD/StamBar/Tween
-onready var regeneration_delay_timer = $GUI/HUD/StamBar/RegenerationDelay
 
 # attack variables
 var is_in_combat = false
@@ -50,29 +49,35 @@ var souls_change
 var souls_price = 30
 var healing_amount = souls_price * 1.5
 
-
 #signals
 signal _on_pass_damage
-signal _on_item_pickup
 
+signal _on_health_ready(max_value)
+signal _on_health_change(old_value, new_value, change_duration)
 
-
+signal _on_stamina_regen_timer_trigger(set_value)
+signal _on_stamina_ready(max_value)
+signal _on_stamina_change(old_value, new_value, change_duration)
 
 
 func _ready():
+	#connecting signals
+	#health
+	connect("_on_health_ready", GUI, "_handle_health_ready")
+	connect("_on_health_change", GUI, "_handle_health_change")
+
+	#stamina
+	connect("_on_stamina_ready", GUI, "_handle_stamina_ready")
+	connect("_on_stamina_change", GUI, "_handle_stamina_change")
+	connect("_on_stamina_regen_timer_trigger", GUI, "_handle_stamina_regen_timer_trigger")
+
+	emit_signal("_on_health_ready", health_max)
+	emit_signal("_on_stamina_ready", 60)
+
 	Global.player_died = false
 	damage_received = false
 	state_machine = $AnimationTree.get("parameters/playback")
-	current_health = 200
-	healthbar.max_value = max_health
-	healthbar.value = current_health
-	current_stam = max_stam
-	stambar.max_value = max_stam
-	stambar.value = current_stam
 	_update_souls_count(0)
-
-
-
 
 
 
@@ -161,28 +166,28 @@ func _update_count_text(souls_total):
 
 func _input(event):
 	if event.is_action_pressed("ui_action_1"):
-		if souls_total >= 30 and current_health < max_health_limit:
+		print("max: ", health_max)
+		print("current: ", health_current)
+		if souls_total >= 30 and health_current < health_max:
 			_heal()
 			souls_change = - souls_price
 			_update_souls_count(souls_change)
 
 
 func _heal():
-	if current_health < max_health_limit:
-		var prev_health = current_health
-		current_health += healing_amount
-		health_animation_node.interpolate_property(healthbar, "value", prev_health, current_health, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		max_health = current_health
-		health_animation_node.start()
-		if current_health > max_health_limit:
-			current_health = max_health_limit	
-		
-		audio_file = "res://Resources/audio/player_sounds/player_heal.wav"
-		$Audio/SFX.stream = load(audio_file) 
-		$Audio/SFX.play()
-		$ParticlesAnimation.visible = true
-		$ParticlesAnimation/Timer.start()
+	var old_value = health_current
+	health_current = min(health_current + healing_amount, health_max)
+	emit_signal("_on_health_change", old_value, health_current, 0.4 )
+	
+	audio_file = "res://Resources/audio/player_sounds/player_heal.wav"
+	$Audio/SFX.stream = load(audio_file) 
+	$Audio/SFX.play()
+	healing_animation.visible = true
+	healing_animation_timer.start()
 
+func _on_Heal_animation_timer_timeout():
+	healing_animation.visible = false
+	
 
 func _on_souls_received(collected_amount):
 	is_in_combat = false
@@ -193,35 +198,28 @@ func _on_souls_received(collected_amount):
 	_update_souls_count(souls_change)
 
 
-func _on_SoulReceive_timeout():
-	$ParticlesAnimation.visible = false
-
-
-
-
 # stamina management section
 func _stamina_deplete(amount):
-	updated_stam = current_stam - amount
-	stambar_animation_node.interpolate_property(stambar, "value", current_stam, updated_stam, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	current_stam = updated_stam
-	stambar_animation_node.start()
+	var new_value = stamina_current - amount
+	emit_signal("_on_stamina_change", stamina_current, new_value, 0.3)
+	stamina_current = new_value
 
 
 func _manage_stamina():
 		if is_in_combat == true:
 			if is_blocking == true:
-				regeneration_delay_timer.stop()
+				emit_signal("_on_stamina_regen_timer_trigger", "stop")
 			else:
-				regeneration_delay_timer.start()
+				emit_signal("_on_stamina_regen_timer_trigger", "start")
 		else:
 			_stamina_regen()
+		pass
 
 func _stamina_regen():
-	if current_stam != max_stam:
-		updated_stam = current_stam + 5
-		stambar_animation_node.interpolate_property(stambar, "value", current_stam, updated_stam, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		current_stam = updated_stam
-		stambar_animation_node.start()
+	if stamina_current < stamina_max:
+		var new_value = stamina_current + 5
+		emit_signal("_on_stamina_change", stamina_current, new_value, 0.4)
+		stamina_current = new_value
 
 
 func _on_RegenerationDelay_timeout():
@@ -247,13 +245,13 @@ func _attack():
 
 func _block():	
 	if Input.is_action_pressed("ui_block") and is_dead == false:
-		if current_stam >= stamprice:
+		if stamina_current >= stamprice:
 			is_in_combat = true
 			movement.x = 0
 			$Block.visible = true
 			state_machine.travel("block")
 			is_blocking = true
-			regeneration_delay_timer.stop()
+			emit_signal("_on_stamina_regen_timer_trigger", "stop")
 			return
 		else:
 			$GUI/DisplayTextMsg/AnimationPlayer.play("msg_show")
@@ -261,7 +259,7 @@ func _block():
 		$Block/CollisionShape2D.disabled = true
 		$Block.visible = false
 		is_blocking = false
-		regeneration_delay_timer.start()
+		emit_signal("_on_stamina_regen_timer_trigger", "start")
 
 
 func _on_Block_area_entered(area):
@@ -303,7 +301,7 @@ func _hurts():
 
 
 func _check_living_state():
-	if current_health <= 0:
+	if health_current <= 0:
 		set_collision_mask_bit(1, false)
 		$HitBox.set_collision_mask_bit(1, false)
 		state_machine.travel("death")
@@ -312,12 +310,13 @@ func _check_living_state():
 
 func _take_damage(damage):
 	damage_received = true
-	current_health -= damage
-	if current_health <= 0:
+	var old_value = health_current
+	health_current -= damage
+	if health_current <= 0:
 		is_dead = true
-	health_animation_node.interpolate_property(healthbar, "value", max_health, current_health, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-	max_health = current_health
-	health_animation_node.start()
+	emit_signal("_on_health_change", old_value, health_current, 0.3 )
+	print("max value: ", health_max)
+	print("current value: ", health_current)
 
 
 func _on_hit(area):
@@ -342,4 +341,4 @@ func _on_death_restart():
 
 
 func _on_player_screen_exited():
-	_take_damage(current_health)
+	_take_damage(health_current)
