@@ -29,23 +29,24 @@ var is_dead = false
 var stamina_max = 60
 var stamina_current = stamina_max
 var stamprice = 20
-
+var stamina_time_delta
 # attack variables
+
 var is_in_combat = false
+
 export(bool) var timer_start = false
+
 var damage_params = {
 	"slash_damage": 30, 
 	"shaft_hit": 15
 	}
+	
 var is_blocking = false
 
 #loot variables
-onready var souls_indicator = $GUI/HUD/Souls/SoulsIndicator
-onready var souls_animator = $GUI/HUD/Souls/SoulsIndicator/Tween
 
 var souls_total = 30
-var prev_souls
-var souls_change
+var souls_old
 var souls_price = 30
 var healing_amount = souls_price * 1.5
 
@@ -59,6 +60,10 @@ signal _on_stamina_regen_timer_trigger(set_value)
 signal _on_stamina_ready(max_value)
 signal _on_stamina_change(old_value, new_value, change_duration)
 
+signal _on_souls_ready(current_value)
+signal _on_souls_change(old_value, new_value, change_duration)
+
+
 
 func _ready():
 	#connecting signals
@@ -71,23 +76,28 @@ func _ready():
 	connect("_on_stamina_change", GUI, "_handle_stamina_change")
 	connect("_on_stamina_regen_timer_trigger", GUI, "_handle_stamina_regen_timer_trigger")
 
+	#souls counter
+	connect("_on_souls_ready", GUI, "_handle_souls_ready")
+	connect("_on_souls_change", GUI, "_handle_souls_change")
+	
+	
 	emit_signal("_on_health_ready", health_max)
-	emit_signal("_on_stamina_ready", 60)
+	emit_signal("_on_stamina_ready", stamina_max)
+	emit_signal("_on_souls_ready", souls_total)
 
 	Global.player_died = false
 	damage_received = false
 	state_machine = $AnimationTree.get("parameters/playback")
-	_update_souls_count(0)
 
 
 
 # movement section	
 func _physics_process(delta):
+	stamina_time_delta = delta
 	_move()
 	_attack()
 	_block()
 	_hurts()
-	_toggle_exp_bar()
 
 
 func _move():	
@@ -152,26 +162,16 @@ func _move():
 
 
 
-# healing and skill using section
-func _update_souls_count(souls_change):
-	prev_souls = souls_total
-	souls_total += souls_change
-	souls_animator.interpolate_method(self, "_update_count_text", prev_souls, souls_total, 0.3, Tween.TRANS_LINEAR, Tween.EASE_OUT)
-	souls_animator.start()
-
-
-func _update_count_text(souls_total):
-	souls_indicator.text = str(round(souls_total))
+# skills usage
 
 
 func _input(event):
 	if event.is_action_pressed("ui_action_1"):
-		print("max: ", health_max)
-		print("current: ", health_current)
 		if souls_total >= 30 and health_current < health_max:
 			_heal()
-			souls_change = - souls_price
-			_update_souls_count(souls_change)
+			souls_old = souls_total
+			souls_total -= souls_price
+			emit_signal("_on_souls_change", souls_old, souls_total, 0.4 )
 
 
 func _heal():
@@ -191,11 +191,12 @@ func _on_Heal_animation_timer_timeout():
 
 func _on_souls_received(collected_amount):
 	is_in_combat = false
-	souls_change = collected_amount
+	souls_old = souls_total
+	souls_total += collected_amount
 	audio_file = "res://Resources/audio/player_sounds/absorb_souls.wav"
 	$Audio/SFX.stream = load(audio_file)
 	$Audio/SFX.play()
-	_update_souls_count(souls_change)
+	emit_signal("_on_souls_change", souls_old, souls_total, 0.4 )
 
 
 # stamina management section
@@ -218,7 +219,7 @@ func _manage_stamina():
 func _stamina_regen():
 	if stamina_current < stamina_max:
 		var new_value = stamina_current + 5
-		emit_signal("_on_stamina_change", stamina_current, new_value, 0.4)
+		emit_signal("_on_stamina_change", stamina_current, new_value, 0.3)
 		stamina_current = new_value
 
 
@@ -226,8 +227,6 @@ func _on_RegenerationDelay_timeout():
 	_stamina_regen()
 
 
-func _toggle_exp_bar():
-	pass
 
 
 # combat section
@@ -315,8 +314,6 @@ func _take_damage(damage):
 	if health_current <= 0:
 		is_dead = true
 	emit_signal("_on_health_change", old_value, health_current, 0.3 )
-	print("max value: ", health_max)
-	print("current value: ", health_current)
 
 
 func _on_hit(area):

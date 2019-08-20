@@ -632,9 +632,6 @@ disabled = true
 
 [node name="GUI" parent="." instance=ExtResource( 9 )]
 
-[node name="HUD" parent="GUI" index="1"]
-editor/display_folded = true
-
 [node name="StaminaBar" parent="GUI/HUD" index="2"]
 editor/display_folded = true
 
