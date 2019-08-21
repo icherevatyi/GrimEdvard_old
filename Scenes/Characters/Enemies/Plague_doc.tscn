@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Characters/Enemies/Enemy_parent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Plague_doc.gd" type="Script" id=2]
@@ -11,7 +11,7 @@
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 192, 224 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 0.3
 step = 0.01
 tracks/0/type = "value"
@@ -53,7 +53,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 0.7
 step = 0.01
 tracks/0/type = "value"
@@ -149,7 +149,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 length = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -164,9 +164,13 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 5.23468
+height = 11.4284
+
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 42, 8.22521 )
 
 [node name="Doc" instance=ExtResource( 1 )]
@@ -185,16 +189,25 @@ vframes = 7
 hframes = 4
 
 [node name="CollisionShape2D" parent="." index="2"]
+visible = false
 position = Vector2( 0.033545, -7.33305 )
 polygon = PoolVector2Array( -10.0335, 17.333, 9.96646, 17.333, 19.9665, 7.33305, 19.9665, -2.66695, 0.0065284, -8.38957, -10.1321, -3.52859 )
 
 [node name="AnimationPlayer" parent="." index="3"]
-anims/damaged = SubResource( 3 )
-anims/death = SubResource( 4 )
-anims/idle = SubResource( 5 )
+anims/damaged = SubResource( 2 )
+anims/death = SubResource( 3 )
+anims/idle = SubResource( 4 )
 
 [node name="AnimationTree" parent="." index="4"]
-parameters/playback = SubResource( 6 )
+parameters/playback = SubResource( 5 )
+
+[node name="EnemyHitBox" parent="." index="5"]
+editor/display_folded = false
+
+[node name="CollisionShape2D2" parent="EnemyHitBox" index="0"]
+visible = true
+position = Vector2( 0, -1 )
+shape = SubResource( 7 )
 
 [node name="Enemy_HP_Under" parent="." index="6"]
 position = Vector2( -16, -21 )
@@ -214,7 +227,7 @@ visible = false
 
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 position = Vector2( 40, -5 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D2" type="CollisionPolygon2D" parent="DetectionRange" index="1"]
 position = Vector2( 0.12851, 0 )

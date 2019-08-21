@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Scripts/Enemy_parent.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -142,13 +142,12 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
 [sub_resource type="AnimationNodeStateMachine" id=21]
 states/attack/node = SubResource( 6 )
@@ -161,7 +160,7 @@ states/idle/node = SubResource( 9 )
 states/idle/position = Vector2( -220.577, -75 )
 states/walk/node = SubResource( 10 )
 states/walk/position = Vector2( -121.577, -357 )
-transitions = [ "idle", "damaged", SubResource( 11 ), "damaged", "death", SubResource( 12 ), "idle", "attack", SubResource( 13 ), "attack", "idle", SubResource( 14 ), "idle", "walk", SubResource( 15 ), "walk", "idle", SubResource( 16 ), "walk", "damaged", SubResource( 17 ), "walk", "attack", SubResource( 18 ), "attack", "walk", SubResource( 19 ), "damaged", "attack", SubResource( 20 ) ]
+transitions = [ "idle", "damaged", SubResource( 11 ), "damaged", "death", SubResource( 12 ), "idle", "attack", SubResource( 13 ), "attack", "idle", SubResource( 14 ), "idle", "walk", SubResource( 15 ), "walk", "idle", SubResource( 16 ), "damaged", "idle", SubResource( 28 ), "attack", "damaged", SubResource( 29 ), "walk", "damaged", SubResource( 30 ) ]
 start_node = "idle"
 end_node = "death"
 graph_offset = Vector2( -521.577, -427 )
@@ -206,6 +205,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -10, -20, 20, -20, 20, 20, -20, 20, -20, -20 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 1 )

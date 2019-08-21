@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Img/Player/reaper_map.png" type="Texture" id=2]
@@ -352,7 +352,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=10]
 length = 0.1
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -435,13 +434,10 @@ switch_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=26]
 switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
 
@@ -486,7 +482,7 @@ states/jump/node = SubResource( 19 )
 states/jump/position = Vector2( 1059, 247 )
 states/walk/node = SubResource( 20 )
 states/walk/position = Vector2( 277.439, 207.526 )
-transitions = [ "idle", "jump", SubResource( 21 ), "jump", "fall", SubResource( 22 ), "fall", "idle", SubResource( 23 ), "idle", "fall", SubResource( 24 ), "idle", "attack", SubResource( 25 ), "attack", "idle", SubResource( 26 ), "idle", "hurts", SubResource( 27 ), "hurts", "idle", SubResource( 28 ), "walk", "idle", SubResource( 29 ), "idle", "walk", SubResource( 30 ), "attack", "attack_2", SubResource( 31 ), "attack_2", "idle", SubResource( 32 ), "hurts", "death", SubResource( 33 ), "idle", "block", SubResource( 34 ), "block", "idle", SubResource( 35 ) ]
+transitions = [ "idle", "jump", SubResource( 21 ), "jump", "fall", SubResource( 22 ), "fall", "idle", SubResource( 23 ), "idle", "attack", SubResource( 25 ), "attack", "idle", SubResource( 26 ), "idle", "hurts", SubResource( 27 ), "hurts", "idle", SubResource( 28 ), "walk", "idle", SubResource( 29 ), "idle", "walk", SubResource( 30 ), "attack", "attack_2", SubResource( 31 ), "attack_2", "idle", SubResource( 32 ), "hurts", "death", SubResource( 33 ), "idle", "block", SubResource( 34 ), "block", "idle", SubResource( 35 ) ]
 start_node = "idle"
 end_node = "death"
 graph_offset = Vector2( -193.432, -185.474 )
@@ -631,6 +627,7 @@ shape = SubResource( 38 )
 disabled = true
 
 [node name="GUI" parent="." instance=ExtResource( 9 )]
+layer = 2
 
 [node name="StaminaBar" parent="GUI/HUD" index="2"]
 editor/display_folded = true
@@ -679,7 +676,6 @@ autoplay = true
 bus = "Music"
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-visible = false
 
 [node name="Block" type="Area2D" parent="."]
 editor/display_folded = true
@@ -722,7 +718,7 @@ process_material = SubResource( 55 )
 wait_time = 0.4
 one_shot = true
 
-[connection signal="body_entered" from="PlayerWeaponHitRange" to="." method="_on_damage_dealt"]
+[connection signal="area_entered" from="PlayerWeaponHitRange" to="." method="_on_damage_dealt"]
 [connection signal="timeout" from="GUI/HUD/StaminaBar/RegenerationDelay" to="." method="_on_RegenerationDelay_timeout"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_player_screen_exited"]

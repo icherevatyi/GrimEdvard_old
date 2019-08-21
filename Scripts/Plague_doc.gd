@@ -2,14 +2,14 @@ extends "res://Scripts/Enemy_parent.gd"
 
 onready var bulletSpawn = $BulletContianer/BulletSpawn
 onready var bullet = preload("res://Scenes/Helpers/Bullet.tscn")
-onready var player = preload("res://Scenes/Characters/Player/Player.tscn")
-onready var soul = preload("res://Scenes/Helpers/Soul.tscn")
 var soul_amount = 35
 signal _on_souls_released
 
 
 func _ready():
 	bulletSpawn.position.x = -13.875
+	state_machine = $AnimationTree.get("parameters/playback")
+	state_machine.start("idle")
 
 
 func _physics_process(delta):

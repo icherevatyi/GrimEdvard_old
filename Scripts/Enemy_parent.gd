@@ -41,6 +41,7 @@ func _ready():
 	current_health = max_health
 
 	state_machine = $AnimationTree.get("parameters/playback")
+	state_machine.start("idle")
 
 
 func _physics_process(delta):

@@ -15,7 +15,7 @@ onready var healing_animation = $Spells/Heal
 onready var healing_animation_timer = $Spells/Heal/Heal_animation_timer
 
 # animation variables
-var state_machine
+onready var state_machine : AnimationNodeStateMachinePlayback
 var audio_file
 
 # health management variables
@@ -66,6 +66,9 @@ signal _on_souls_change(old_value, new_value, change_duration)
 
 
 func _ready():
+	state_machine =  $AnimationTree.get("parameters/playback")
+	state_machine.start("idle")
+	
 	#connecting signals
 	#health
 	connect("_on_health_ready", GUI, "_handle_health_ready")
@@ -79,20 +82,20 @@ func _ready():
 	#souls counter
 	connect("_on_souls_ready", GUI, "_handle_souls_ready")
 	connect("_on_souls_change", GUI, "_handle_souls_change")
-	
-	
+		
 	emit_signal("_on_health_ready", health_max)
 	emit_signal("_on_stamina_ready", stamina_max)
 	emit_signal("_on_souls_ready", souls_total)
 
+
 	Global.player_died = false
 	damage_received = false
-	state_machine = $AnimationTree.get("parameters/playback")
 
 
 
 # movement section	
 func _physics_process(delta):
+	state_machine.get_current_node()
 	stamina_time_delta = delta
 	_move()
 	_attack()
@@ -102,7 +105,7 @@ func _physics_process(delta):
 
 func _move():	
 	if is_dead == false:
-		movement.y += GRAVITY
+		movement.y = min(movement.y + GRAVITY, 500)
 	
 		if Input.is_action_pressed("ui_right"):
 			movement.x = min(movement.x + acceleration, speed)
@@ -163,8 +166,6 @@ func _move():
 
 
 # skills usage
-
-
 func _input(event):
 	if event.is_action_pressed("ui_action_1"):
 		if souls_total >= 30 and health_current < health_max:
@@ -290,7 +291,6 @@ func _slash():
 func _hit():
 	emit_signal("_on_pass_damage", damage_params.shaft_hit)
 
-
 func _hurts():
 	if damage_received == true:
 		is_in_combat = true
@@ -305,6 +305,7 @@ func _check_living_state():
 		$HitBox.set_collision_mask_bit(1, false)
 		state_machine.travel("death")
 		Global.player_died = true
+		return
 
 
 func _take_damage(damage):
@@ -322,8 +323,8 @@ func _on_hit(area):
 		_take_damage(20)
 
 
-func _on_damage_dealt(body):
-	if body.is_in_group("enemies"):
+func _on_damage_dealt(area):
+	if area.name == "EnemyHitBox":
 		if punch == false:
 			audio_file = "res://Resources/audio/weapon_attack/player_weapon_hit_1.wav"
 		else: 
@@ -333,9 +334,10 @@ func _on_damage_dealt(body):
 	
 		
 func _on_death_restart():
-	is_in_combat = false
+	is_in_combat = false	
 	Pause._pause_action()
 
 
 func _on_player_screen_exited():
 	_take_damage(health_current)
+
