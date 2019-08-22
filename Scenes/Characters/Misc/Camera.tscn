@@ -1,78 +1,12 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Scripts/ScreenShake.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Img/Background/Night_Calm/moon.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Img/Background/Night_Calm/cloud_1.png" type="Texture" id=3]
-[ext_resource path="res://Resources/Img/Background/Night_Calm/cloud_2.png" type="Texture" id=4]
-[ext_resource path="res://Resources/Img/Background/Night_Calm/cloud_3.png" type="Texture" id=5]
-[ext_resource path="res://Resources/Img/Background/Night_Calm/cloud_4.png" type="Texture" id=6]
-[ext_resource path="res://Resources/Img/Background/Night_Calm/cloud_5.png" type="Texture" id=7]
-[ext_resource path="res://Resources/Img/Background/Night_Calm/cloud_6.png" type="Texture" id=8]
-[ext_resource path="res://Resources/Img/Background/Night_Calm/cloud_7.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Img/Background/Night_Calm/cloud_8.png" type="Texture" id=10]
-[ext_resource path="res://Resources/Img/Background/Night_Calm/cloud_9.png" type="Texture" id=11]
-
-[sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.88501, 0.974417, 0.976563, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-
-[sub_resource type="Curve" id=3]
-min_value = -1.0
-_data = [ Vector2( 0.00118518, 0.9152 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.8624 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
-
-[sub_resource type="Curve" id=5]
-_data = [ Vector2( 0, 0.456 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.1392 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
-
-[sub_resource type="ParticlesMaterial" id=7]
-render_priority = 1
-emission_shape = 2
-emission_box_extents = Vector3( 1024, 300, 1 )
-flag_disable_z = true
-spread = 10.0
-gravity = Vector3( 0, 0, 0 )
-angular_velocity = -1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 2.0
-scale_random = 1.0
-scale_curve = SubResource( 6 )
-color_ramp = SubResource( 2 )
-hue_variation_curve = SubResource( 4 )
-
-[sub_resource type="Curve" id=8]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.2833 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=9]
-width = 512
-curve = SubResource( 8 )
-
-[sub_resource type="ParticlesMaterial" id=10]
-emission_shape = 2
-emission_box_extents = Vector3( 1024, 300, 1 )
-flag_disable_z = true
-gravity = Vector3( 0, 0, 0 )
-angular_velocity = 1.05
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 2.0
-scale_random = 1.0
-scale_curve = SubResource( 9 )
-color = Color( 1, 0.984314, 0.886275, 1 )
 
 [node name="Camera" type="Camera2D"]
+position = Vector2( 0, -20 )
 current = true
 zoom = Vector2( 0.3, 0.3 )
-limit_left = -320
-limit_bottom = 750
-offset_v = 1.0
+limit_bottom = 610
 
 [node name="ScreenShake" type="Node2D" parent="."]
 editor/display_folded = true
@@ -83,112 +17,6 @@ script = ExtResource( 1 )
 [node name="Frequency" type="Timer" parent="ScreenShake"]
 
 [node name="Duration" type="Timer" parent="ScreenShake"]
-
-[node name="Background" type="ParallaxBackground" parent="."]
-scroll_ignore_camera_zoom = true
-
-[node name="ColorRect" type="ColorRect" parent="Background"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.101961, 0.00392157, 0.223529, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Stars" type="ParallaxLayer" parent="Background"]
-editor/display_folded = true
-motion_scale = Vector2( 0.1, 0.1 )
-motion_mirroring = Vector2( 1200, 300 )
-
-[node name="StarLayer1" type="Particles2D" parent="Background/Stars"]
-amount = 300
-preprocess = 3.0
-speed_scale = 0.1
-process_material = SubResource( 7 )
-
-[node name="StarLayer2" type="Particles2D" parent="Background/Stars"]
-position = Vector2( 150, 150 )
-amount = 300
-lifetime = 2.0
-preprocess = 3.0
-speed_scale = 0.2
-process_material = SubResource( 10 )
-
-[node name="Moon" type="Sprite" parent="Background"]
-position = Vector2( 730, 40 )
-texture = ExtResource( 2 )
-centered = false
-
-[node name="Clouds" type="ParallaxLayer" parent="Background"]
-editor/display_folded = true
-position = Vector2( -380, 10 )
-motion_scale = Vector2( 0.2, 0.2 )
-motion_mirroring = Vector2( 1550, 0 )
-
-[node name="Cloud1" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 470, 20 )
-texture = ExtResource( 3 )
-
-[node name="Cloud2" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 160, 16 )
-texture = ExtResource( 4 )
-
-[node name="Cloud3" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 705.5, 20 )
-texture = ExtResource( 5 )
-
-[node name="Cloud4" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 1360, 16 )
-texture = ExtResource( 6 )
-
-[node name="Cloud5" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 1340, 60 )
-texture = ExtResource( 7 )
-
-[node name="Cloud6" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 490, 74 )
-texture = ExtResource( 8 )
-
-[node name="Cloud7" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 580, 42.75 )
-texture = ExtResource( 9 )
-
-[node name="Cloud8" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 320, 50 )
-texture = ExtResource( 10 )
-
-[node name="Cloud9" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 910, 34.25 )
-texture = ExtResource( 11 )
-
-[node name="Cloud10" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 10, 30 )
-texture = ExtResource( 8 )
-
-[node name="Cloud11" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 650, 90 )
-texture = ExtResource( 4 )
-
-[node name="Cloud12" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 93, 67.5 )
-texture = ExtResource( 5 )
-
-[node name="Cloud13" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 200, 58.5 )
-texture = ExtResource( 6 )
-
-[node name="Cloud14" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 1065, 23 )
-texture = ExtResource( 3 )
-
-[node name="Cloud15" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 1090, 61.5 )
-texture = ExtResource( 7 )
-
-[node name="Cloud16" type="Sprite" parent="Background/Clouds"]
-position = Vector2( 1170, 42.75 )
-texture = ExtResource( 4 )
 
 [connection signal="timeout" from="ScreenShake/Frequency" to="ScreenShake" method="_on_Frequency_timeout"]
 [connection signal="timeout" from="ScreenShake/Duration" to="ScreenShake" method="_on_Duration_timeout"]

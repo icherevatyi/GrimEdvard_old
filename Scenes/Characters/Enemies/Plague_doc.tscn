@@ -166,11 +166,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=5]
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 5.23468
 height = 11.4284
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 42, 8.22521 )
 
 [node name="Doc" instance=ExtResource( 1 )]
@@ -189,7 +189,6 @@ vframes = 7
 hframes = 4
 
 [node name="CollisionShape2D" parent="." index="2"]
-visible = false
 position = Vector2( 0.033545, -7.33305 )
 polygon = PoolVector2Array( -10.0335, 17.333, 9.96646, 17.333, 19.9665, 7.33305, 19.9665, -2.66695, 0.0065284, -8.38957, -10.1321, -3.52859 )
 
@@ -201,13 +200,10 @@ anims/idle = SubResource( 4 )
 [node name="AnimationTree" parent="." index="4"]
 parameters/playback = SubResource( 5 )
 
-[node name="EnemyHitBox" parent="." index="5"]
-editor/display_folded = false
-
 [node name="CollisionShape2D2" parent="EnemyHitBox" index="0"]
 visible = true
 position = Vector2( 0, -1 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="Enemy_HP_Under" parent="." index="6"]
 position = Vector2( -16, -21 )
@@ -222,12 +218,9 @@ stream = ExtResource( 6 )
 editor/display_folded = true
 position = Vector2( 0, -48 )
 
-[node name="DetectionRange" parent="." index="10"]
-visible = false
-
 [node name="CollisionShape2D" parent="DetectionRange" index="0"]
 position = Vector2( 40, -5 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="CollisionShape2D2" type="CollisionPolygon2D" parent="DetectionRange" index="1"]
 position = Vector2( 0.12851, 0 )
