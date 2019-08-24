@@ -211,7 +211,6 @@ points = PoolVector2Array( 31.9466, 4.65186, 32, 32, 0, 32, 0, 0, 26.563, 0 )
 script = ExtResource( 1 )
 
 [node name="Background_sky" type="CanvasLayer" parent="."]
-editor/display_folded = true
 layer = -1
 
 [node name="BgColor" type="ColorRect" parent="Background_sky"]
