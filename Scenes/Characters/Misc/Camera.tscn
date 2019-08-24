@@ -3,13 +3,24 @@
 [ext_resource path="res://Scripts/ScreenShake.gd" type="Script" id=1]
 
 [node name="Camera" type="Camera2D"]
-position = Vector2( 0, -20 )
+visible = false
 current = true
 zoom = Vector2( 0.3, 0.3 )
+limit_left = -650
+limit_top = -650
+limit_right = 3250
 limit_bottom = 610
+smoothing_speed = 15.0
+drag_margin_top = 0.75
+drag_margin_bottom = 0.75
+editor_draw_drag_margin = true
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="ScreenShake" type="Node2D" parent="."]
 editor/display_folded = true
+visible = false
 script = ExtResource( 1 )
 
 [node name="ShakeTween" type="Tween" parent="ScreenShake"]
