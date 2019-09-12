@@ -4,7 +4,7 @@
 
 [node name="Camera" type="Camera2D"]
 visible = false
-position = Vector2( 0, -30 )
+position = Vector2( 0, -25 )
 current = true
 zoom = Vector2( 0.3, 0.3 )
 limit_top = -650
