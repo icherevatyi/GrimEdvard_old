@@ -1,103 +1,143 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Scripts/GUI.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Img/GUI/buttons_map.png" type="Texture" id=2]
-[ext_resource path="res://Resources/Img/GUI/btn_dir_jump.png" type="Texture" id=3]
+[ext_resource path="res://Resources/Img/GUI/movement_wheel_simple.svg" type="Texture" id=2]
+[ext_resource path="res://Resources/Img/GUI/buttons_map.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Helpers/lvl_font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Resources/Img/GUI/HUD_map.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Helpers/GUI_font.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scenes/Helpers/screen_text.tres" type="DynamicFont" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
+flags = 1
 atlas = ExtResource( 2 )
-region = Rect2( 0, 67, 66, 66 )
+region = Rect2( 0, 72, 69, 78 )
 
 [sub_resource type="AtlasTexture" id=2]
+flags = 1
 atlas = ExtResource( 2 )
-region = Rect2( 67, 67, 66, 66 )
+region = Rect2( 664, 72, 69, 78 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=35]
+flags = 1
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 66, 66 )
+region = Rect2( 150, 72, 69, 78 )
 
 [sub_resource type="AtlasTexture" id=4]
+flags = 1
 atlas = ExtResource( 2 )
-region = Rect2( 67, 0, 66, 66 )
+region = Rect2( 372, 72, 69, 78 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=36]
+flags = 1
 atlas = ExtResource( 2 )
-region = Rect2( 0, 134, 66, 66 )
+region = Rect2( 70, 0, 80, 70 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=38]
+flags = 1
 atlas = ExtResource( 2 )
-region = Rect2( 67, 134, 66, 66 )
+region = Rect2( 512, 0, 80, 70 )
 
 [sub_resource type="AtlasTexture" id=7]
+flags = 1
 atlas = ExtResource( 2 )
-region = Rect2( 134, 67, 66, 66 )
+region = Rect2( 6, 5, 65, 65 )
 
 [sub_resource type="AtlasTexture" id=8]
+flags = 1
 atlas = ExtResource( 2 )
-region = Rect2( 201, 67, 66, 66 )
+region = Rect2( 1111, 5, 65, 65 )
 
 [sub_resource type="AtlasTexture" id=9]
+flags = 1
 atlas = ExtResource( 2 )
-region = Rect2( 134, 0, 66, 66 )
+region = Rect2( 149, 5, 64, 65 )
 
 [sub_resource type="AtlasTexture" id=10]
+flags = 1
 atlas = ExtResource( 2 )
-region = Rect2( 201, 0, 66, 66 )
+region = Rect2( 1475, 5, 64, 65 )
 
 [sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 2 )
-region = Rect2( 134, 201, 66, 66 )
+atlas = ExtResource( 3 )
+region = Rect2( 134, 67, 66, 66 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 2 )
-region = Rect2( 201, 201, 66, 66 )
+atlas = ExtResource( 3 )
+region = Rect2( 201, 67, 66, 66 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 201, 66, 66 )
+atlas = ExtResource( 3 )
+region = Rect2( 134, 0, 66, 66 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 2 )
-region = Rect2( 67, 201, 66, 66 )
+atlas = ExtResource( 3 )
+region = Rect2( 201, 0, 66, 66 )
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 2 )
-region = Rect2( 158, 135, 23, 45 )
+atlas = ExtResource( 3 )
+region = Rect2( 134, 201, 66, 66 )
 
 [sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 201, 201, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 201, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 3 )
+region = Rect2( 67, 201, 66, 66 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 3 )
+region = Rect2( 158, 135, 23, 45 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 62, 66, 100, 87 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 6, 150, 207, 70 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 1
+atlas = ExtResource( 2 )
+region = Rect2( 890, 150, 207, 70 )
+
+[sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 14, 244, 15 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 29, 244, 15 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 44, 171, 13 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 57, 171, 13 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 2, 8, 10 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 70, 276, 11 )
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 81, 276, 11 )
 
-[sub_resource type="Animation" id=23]
-resource_name = "msg_show"
+[sub_resource type="Animation" id=34]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -137,80 +177,86 @@ __meta__ = {
 }
 
 [node name="TouchLeft" type="TouchScreenButton" parent="ActionBtns"]
-position = Vector2( 31.7209, 490 )
+position = Vector2( 28, 403 )
 normal = SubResource( 1 )
 pressed = SubResource( 2 )
 passby_press = true
 action = "ui_left"
-visibility_mode = 1
 
 [node name="TouchRight" type="TouchScreenButton" parent="ActionBtns"]
-position = Vector2( 161.721, 490 )
-normal = SubResource( 3 )
+position = Vector2( 178, 403 )
+normal = SubResource( 35 )
 pressed = SubResource( 4 )
 passby_press = true
 action = "ui_right"
-visibility_mode = 1
 
 [node name="TouchUp" type="TouchScreenButton" parent="ActionBtns"]
-position = Vector2( 98, 420 )
-normal = SubResource( 5 )
-pressed = SubResource( 6 )
+position = Vector2( 98, 333 )
+normal = SubResource( 36 )
+pressed = SubResource( 38 )
 passby_press = true
 action = "ui_up"
-visibility_mode = 1
 
 [node name="TouchUpLeft" type="TouchScreenButton" parent="ActionBtns"]
-position = Vector2( 8, 400 )
-normal = ExtResource( 3 )
-passby_press = true
-action = "ui_left_up"
-visibility_mode = 1
-
-[node name="TouchUpRight" type="TouchScreenButton" parent="ActionBtns"]
-position = Vector2( 165.721, 401 )
-normal = ExtResource( 3 )
-passby_press = true
-action = "ui_right_up"
-visibility_mode = 1
-
-[node name="TouchPick" type="TouchScreenButton" parent="ActionBtns"]
-position = Vector2( 798.721, 480 )
+position = Vector2( 33, 338 )
 normal = SubResource( 7 )
 pressed = SubResource( 8 )
 passby_press = true
+action = "ui_left_up"
+
+[node name="TouchUpRight" type="TouchScreenButton" parent="ActionBtns"]
+position = Vector2( 178, 338 )
+normal = SubResource( 9 )
+pressed = SubResource( 10 )
+passby_press = true
+action = "ui_right_up"
+
+[node name="TouchPick" type="TouchScreenButton" parent="ActionBtns"]
+position = Vector2( 798.721, 480 )
+normal = SubResource( 11 )
+pressed = SubResource( 12 )
+passby_press = true
 action = "ui_accept"
-visibility_mode = 1
 
 [node name="TouchAttack" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 896, 447 )
 scale = Vector2( 1.5, 1.5 )
-normal = SubResource( 9 )
-pressed = SubResource( 10 )
+normal = SubResource( 13 )
+pressed = SubResource( 14 )
 passby_press = true
 action = "ui_attack"
-visibility_mode = 1
 
 [node name="TouchHeal" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 830, 372.347 )
-normal = SubResource( 11 )
-pressed = SubResource( 12 )
+normal = SubResource( 15 )
+pressed = SubResource( 16 )
+passby_press = true
 action = "ui_action_1"
-visibility_mode = 1
 
 [node name="TouchBlock" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 927, 352.347 )
-normal = SubResource( 13 )
-pressed = SubResource( 14 )
+normal = SubResource( 17 )
+pressed = SubResource( 18 )
+passby_press = true
 action = "ui_block"
-visibility_mode = 1
 
 [node name="TouchOptions" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 970, 30 )
-normal = SubResource( 15 )
+normal = SubResource( 19 )
 passby_press = true
 action = "ui_cancel"
-visibility_mode = 1
+
+[node name="Center" type="TouchScreenButton" parent="ActionBtns"]
+position = Vector2( 97, 403 )
+scale = Vector2( 0.81, 0.896551 )
+normal = SubResource( 20 )
+passby_press = true
+
+[node name="TouchDown1" type="TouchScreenButton" parent="ActionBtns"]
+position = Vector2( 34, 481 )
+normal = SubResource( 37 )
+pressed = SubResource( 39 )
+passby_press = true
 
 [node name="HUD" type="Control" parent="."]
 margin_right = 40.0
@@ -239,8 +285,8 @@ margin_top = 46.0
 margin_right = 275.0
 margin_bottom = 61.0
 value = 100.0
-texture_under = SubResource( 16 )
-texture_progress = SubResource( 17 )
+texture_under = SubResource( 27 )
+texture_progress = SubResource( 28 )
 
 [node name="Tween" type="Tween" parent="HUD/HPBar"]
 
@@ -251,8 +297,8 @@ margin_right = 202.0
 margin_bottom = 84.0
 max_value = 60.0
 value = 60.0
-texture_under = SubResource( 18 )
-texture_progress = SubResource( 19 )
+texture_under = SubResource( 29 )
+texture_progress = SubResource( 30 )
 
 [node name="Tween" type="Tween" parent="HUD/StaminaBar"]
 
@@ -271,7 +317,7 @@ margin_left = -70.0
 margin_top = 25.0
 margin_right = -54.0
 margin_bottom = 43.0
-texture = SubResource( 20 )
+texture = SubResource( 31 )
 expand = true
 
 [node name="SoulsIndicator" type="Label" parent="HUD/Souls"]
@@ -293,8 +339,8 @@ margin_top = 108.0
 margin_right = 307.0
 margin_bottom = 119.0
 value = 80.0
-texture_under = SubResource( 21 )
-texture_progress = SubResource( 22 )
+texture_under = SubResource( 32 )
+texture_progress = SubResource( 33 )
 
 [node name="Tween" type="Tween" parent="HUD/EXPBar"]
 
@@ -317,5 +363,5 @@ text = "Your Concentration is too low"
 align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DisplayTextMsg"]
-anims/msg_show = SubResource( 23 )
+anims/msg_show = SubResource( 34 )
 
