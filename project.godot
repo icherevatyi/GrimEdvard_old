@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://Scripts/StateMachine.gd"
+} ]
 _global_script_class_icons={
-
+"StateMachine": ""
 }
 
 [application]
@@ -25,7 +30,7 @@ Global="*res://Scripts/Global.gd"
 SceneChanger="*res://Scenes/Helpers/SceneChanger.tscn"
 Pause="*res://Scenes/Helpers/PauseScreen.tscn"
 Bullet="*res://Scenes/Helpers/Bullet.tscn"
-Loot_list="*res://Scripts/Loot_list.gd"
+Loot_list="*res://Scripts/LootList.gd"
 
 [debug]
 

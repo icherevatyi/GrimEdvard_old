@@ -18,7 +18,7 @@ flags = 1
 atlas = ExtResource( 2 )
 region = Rect2( 664, 72, 69, 78 )
 
-[sub_resource type="AtlasTexture" id=35]
+[sub_resource type="AtlasTexture" id=3]
 flags = 1
 atlas = ExtResource( 2 )
 region = Rect2( 150, 72, 69, 78 )
@@ -28,12 +28,12 @@ flags = 1
 atlas = ExtResource( 2 )
 region = Rect2( 372, 72, 69, 78 )
 
-[sub_resource type="AtlasTexture" id=36]
+[sub_resource type="AtlasTexture" id=5]
 flags = 1
 atlas = ExtResource( 2 )
 region = Rect2( 70, 0, 80, 70 )
 
-[sub_resource type="AtlasTexture" id=38]
+[sub_resource type="AtlasTexture" id=6]
 flags = 1
 atlas = ExtResource( 2 )
 region = Rect2( 512, 0, 80, 70 )
@@ -99,45 +99,45 @@ flags = 1
 atlas = ExtResource( 2 )
 region = Rect2( 62, 66, 100, 87 )
 
-[sub_resource type="AtlasTexture" id=37]
+[sub_resource type="AtlasTexture" id=21]
 flags = 1
 atlas = ExtResource( 2 )
 region = Rect2( 6, 150, 207, 70 )
 
-[sub_resource type="AtlasTexture" id=39]
+[sub_resource type="AtlasTexture" id=22]
 flags = 1
 atlas = ExtResource( 2 )
 region = Rect2( 890, 150, 207, 70 )
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=23]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 14, 244, 15 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=24]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 29, 244, 15 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 44, 171, 13 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 57, 171, 13 )
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 2, 8, 10 )
 
-[sub_resource type="AtlasTexture" id=32]
+[sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 70, 276, 11 )
 
-[sub_resource type="AtlasTexture" id=33]
+[sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 5 )
 region = Rect2( 2, 81, 276, 11 )
 
-[sub_resource type="Animation" id=34]
+[sub_resource type="Animation" id=30]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -182,20 +182,23 @@ normal = SubResource( 1 )
 pressed = SubResource( 2 )
 passby_press = true
 action = "ui_left"
+visibility_mode = 1
 
 [node name="TouchRight" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 178, 403 )
-normal = SubResource( 35 )
+normal = SubResource( 3 )
 pressed = SubResource( 4 )
 passby_press = true
 action = "ui_right"
+visibility_mode = 1
 
 [node name="TouchUp" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 98, 333 )
-normal = SubResource( 36 )
-pressed = SubResource( 38 )
+normal = SubResource( 5 )
+pressed = SubResource( 6 )
 passby_press = true
 action = "ui_up"
+visibility_mode = 1
 
 [node name="TouchUpLeft" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 33, 338 )
@@ -203,6 +206,7 @@ normal = SubResource( 7 )
 pressed = SubResource( 8 )
 passby_press = true
 action = "ui_left_up"
+visibility_mode = 1
 
 [node name="TouchUpRight" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 178, 338 )
@@ -210,6 +214,7 @@ normal = SubResource( 9 )
 pressed = SubResource( 10 )
 passby_press = true
 action = "ui_right_up"
+visibility_mode = 1
 
 [node name="TouchPick" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 798.721, 480 )
@@ -217,6 +222,7 @@ normal = SubResource( 11 )
 pressed = SubResource( 12 )
 passby_press = true
 action = "ui_accept"
+visibility_mode = 1
 
 [node name="TouchAttack" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 896, 447 )
@@ -225,6 +231,7 @@ normal = SubResource( 13 )
 pressed = SubResource( 14 )
 passby_press = true
 action = "ui_attack"
+visibility_mode = 1
 
 [node name="TouchHeal" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 830, 372.347 )
@@ -232,6 +239,7 @@ normal = SubResource( 15 )
 pressed = SubResource( 16 )
 passby_press = true
 action = "ui_action_1"
+visibility_mode = 1
 
 [node name="TouchBlock" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 927, 352.347 )
@@ -239,24 +247,28 @@ normal = SubResource( 17 )
 pressed = SubResource( 18 )
 passby_press = true
 action = "ui_block"
+visibility_mode = 1
 
 [node name="TouchOptions" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 970, 30 )
 normal = SubResource( 19 )
 passby_press = true
 action = "ui_cancel"
+visibility_mode = 1
 
 [node name="Center" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 97, 403 )
 scale = Vector2( 0.81, 0.896551 )
 normal = SubResource( 20 )
 passby_press = true
+visibility_mode = 1
 
 [node name="TouchDown1" type="TouchScreenButton" parent="ActionBtns"]
 position = Vector2( 34, 481 )
-normal = SubResource( 37 )
-pressed = SubResource( 39 )
+normal = SubResource( 21 )
+pressed = SubResource( 22 )
 passby_press = true
+visibility_mode = 1
 
 [node name="HUD" type="Control" parent="."]
 margin_right = 40.0
@@ -285,8 +297,8 @@ margin_top = 46.0
 margin_right = 275.0
 margin_bottom = 61.0
 value = 100.0
-texture_under = SubResource( 27 )
-texture_progress = SubResource( 28 )
+texture_under = SubResource( 23 )
+texture_progress = SubResource( 24 )
 
 [node name="Tween" type="Tween" parent="HUD/HPBar"]
 
@@ -297,8 +309,8 @@ margin_right = 202.0
 margin_bottom = 84.0
 max_value = 60.0
 value = 60.0
-texture_under = SubResource( 29 )
-texture_progress = SubResource( 30 )
+texture_under = SubResource( 25 )
+texture_progress = SubResource( 26 )
 
 [node name="Tween" type="Tween" parent="HUD/StaminaBar"]
 
@@ -317,7 +329,7 @@ margin_left = -70.0
 margin_top = 25.0
 margin_right = -54.0
 margin_bottom = 43.0
-texture = SubResource( 31 )
+texture = SubResource( 27 )
 expand = true
 
 [node name="SoulsIndicator" type="Label" parent="HUD/Souls"]
@@ -339,8 +351,8 @@ margin_top = 108.0
 margin_right = 307.0
 margin_bottom = 119.0
 value = 80.0
-texture_under = SubResource( 32 )
-texture_progress = SubResource( 33 )
+texture_under = SubResource( 28 )
+texture_progress = SubResource( 29 )
 
 [node name="Tween" type="Tween" parent="HUD/EXPBar"]
 
@@ -363,5 +375,5 @@ text = "Your Concentration is too low"
 align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DisplayTextMsg"]
-anims/msg_show = SubResource( 34 )
+anims/msg_show = SubResource( 30 )
 

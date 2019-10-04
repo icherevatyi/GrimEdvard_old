@@ -8,6 +8,7 @@ position = Vector2( 0, -25 )
 current = true
 zoom = Vector2( 0.3, 0.3 )
 limit_top = -650
+limit_right = 3824
 limit_bottom = 610
 smoothing_speed = 15.0
 drag_margin_top = 0.5

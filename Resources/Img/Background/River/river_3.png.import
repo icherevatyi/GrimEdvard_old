@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/river.png-2f34edca7517a895e780c785ed2f5846.stex"
+path="res://.import/river_3.png-919e88951aa4c5d97474f54035858698.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Img/Background/river.png"
-dest_files=[ "res://.import/river.png-2f34edca7517a895e780c785ed2f5846.stex" ]
+source_file="res://Resources/Img/Background/River/river_3.png"
+dest_files=[ "res://.import/river_3.png-919e88951aa4c5d97474f54035858698.stex" ]
 
 [params]
 
